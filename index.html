@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="fr" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STEWAN DIGITAL HUB SERVICE</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        gold: '#D4A843',
+        'gold-light': '#E8C96A',
+        'gold-dark': '#B08A2E',
+        dark: '#0A0A0A',
+        'dark-card': '#141414',
+        'dark-surface': '#1A1A1A',
+      }
+    }
+  }
+}
+</script>
+  <style>
+html, body { height: 100%; margin: 0; }
+body { font-family: 'DM Sans', sans-serif; }
+.font-display { font-family: 'Playfair Display', serif; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { opacity: 0; }
+.fade-up.visible { animation: fadeUp 0.7s ease forwards; }
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.gold-shimmer {
+  background: linear-gradient(90deg, #D4A843 0%, #F0E68C 50%, #D4A843 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+.product-card {
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
+}
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(212, 168, 67, 0.15);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #D4A843, #E8C96A);
+  transition: all 0.3s ease;
+}
+.btn-gold:hover {
+  background: linear-gradient(135deg, #E8C96A, #F0E68C);
+  box-shadow: 0 8px 30px rgba(212, 168, 67, 0.4);
+}
+
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+.nav-blur { backdrop-filter: blur(20px); background: rgba(10,10,10,0.85); }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #D4A843; border-radius: 3px; }
+</style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-dark text-white overflow-auto">
+  <div id="app-wrapper" class="w-full h-full noise-overlay"><!-- Nav -->
+   <nav class="nav-blur fixed top-0 left-0 w-full z-50 border-b border-gold/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+     <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold to-gold-light flex items-center justify-center"><span class="text-dark font-bold text-lg font-display">S</span>
+      </div><span class="font-display font-bold text-lg tracking-wide hidden sm:block">STEWAN <span class="text-gold">DIGITAL</span></span>
+     </div>
+     <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400"><a href="#accueil" class="hover:text-gold transition">Accueil</a> <a href="#apropos" class="hover:text-gold transition">À propos</a> <a href="#produits" class="hover:text-gold transition">Produits</a> <a href="#pourquoi" class="hover:text-gold transition">Avantages</a> <a href="#contact" class="hover:text-gold transition">Contact</a>
+     </div><button id="mobile-menu-btn" class="md:hidden text-gold"><i data-lucide="menu" class="w-6 h-6"></i></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 flex flex-col gap-3 text-sm font-medium text-gray-400"><a href="#accueil" class="hover:text-gold transition py-1">Accueil</a> <a href="#apropos" class="hover:text-gold transition py-1">À propos</a> <a href="#produits" class="hover:text-gold transition py-1">Produits</a> <a href="#pourquoi" class="hover:text-gold transition py-1">Avantages</a> <a href="#contact" class="hover:text-gold transition py-1">Contact</a>
+    </div>
+   </nav><!-- Hero -->
+   <section id="accueil" class="relative pt-32 pb-24 px-6 min-h-[90%] flex items-center">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+     <div class="absolute -top-1/2 -right-1/4 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl"></div>
+     <div class="absolute -bottom-1/4 -left-1/4 w-[400px] h-[400px] bg-gold/3 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto w-full relative z-10">
+     <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/30 bg-gold/5 mb-8 text-gold text-sm font-medium"><i data-lucide="zap" class="w-4 h-4"></i> <span>E-Business · Trading · Stratégies Digitales</span>
+      </div>
+      <h1 id="hero-title" class="font-display text-4xl sm:text-5xl lg:text-7xl font-900 leading-tight mb-6">Gagnez vos premiers <span class="gold-shimmer">revenus en ligne</span> rapidement</h1>
+      <p id="hero-subtitle" class="text-gray-400 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl">Dédiée à l'e-business, au trading et aux stratégies digitales simples. Des produits pratiques et efficaces pour agir vite, même sans expérience.</p>
+      <div class="flex flex-wrap gap-4"><a href="#produits" id="hero-cta" class="btn-gold text-dark font-bold px-8 py-4 rounded-xl text-lg inline-flex items-center gap-2"> Commencer maintenant <i data-lucide="arrow-right" class="w-5 h-5"></i> </a> <a href="#apropos" class="border border-gray-700 hover:border-gold/50 text-gray-300 hover:text-white font-medium px-8 py-4 rounded-xl text-lg transition inline-flex items-center gap-2"> En savoir plus </a>
+      </div>
+      <div class="flex gap-8 mt-14 text-sm text-gray-500">
+       <div>
+        <span class="text-gold font-bold text-2xl font-display">500+</span><br>
+        Clients satisfaits
+       </div>
+       <div class="border-l border-gray-800 pl-8">
+        <span class="text-gold font-bold text-2xl font-display">50+</span><br>
+        Produits digitaux
+       </div>
+       <div class="border-l border-gray-800 pl-8 hidden sm:block">
+        <span class="text-gold font-bold text-2xl font-display">24/7</span><br>
+        Support disponible
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- À Propos -->
+   <section id="apropos" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="fade-up text-center mb-16"><span class="text-gold text-sm font-semibold tracking-widest uppercase">À Propos</span>
+      <h2 id="about-title" class="font-display text-3xl sm:text-5xl font-bold mt-3 mb-6">Qui sommes-nous ?</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto text-lg">STEWAN DIGITAL HUB SERVICE est votre partenaire pour réussir en ligne. Nous rendons le business digital accessible à tous.</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-6 fade-up" style="animation-delay:0.2s">
+      <div class="bg-dark-surface border border-gray-800 rounded-2xl p-8 hover:border-gold/30 transition group">
+       <div class="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition"><i data-lucide="rocket" class="w-7 h-7 text-gold"></i>
+       </div>
+       <h3 class="font-display text-xl font-bold mb-3">Action immédiate</h3>
+       <p class="text-gray-400 leading-relaxed">Nos produits sont conçus pour que vous puissiez agir dès aujourd'hui. Pas de théorie inutile, que du concret.</p>
+      </div>
+      <div class="bg-dark-surface border border-gray-800 rounded-2xl p-8 hover:border-gold/30 transition group">
+       <div class="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition"><i data-lucide="target" class="w-7 h-7 text-gold"></i>
+       </div>
+       <h3 class="font-display text-xl font-bold mb-3">Efficacité prouvée</h3>
+       <p class="text-gray-400 leading-relaxed">Chaque ressource a été testée et validée. Des stratégies qui produisent des résultats mesurables.</p>
+      </div>
+      <div class="bg-dark-surface border border-gray-800 rounded-2xl p-8 hover:border-gold/30 transition group">
+       <div class="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition"><i data-lucide="users" class="w-7 h-7 text-gold"></i>
+       </div>
+       <h3 class="font-display text-xl font-bold mb-3">Zéro expérience requise</h3>
+       <p class="text-gray-400 leading-relaxed">Débutant complet ? Parfait. Nos guides sont pensés pour vous accompagner pas à pas.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Produits -->
+   <section id="produits" class="py-24 px-6 bg-dark-card">
+    <div class="max-w-7xl mx-auto">
+     <div class="fade-up text-center mb-16"><span class="text-gold text-sm font-semibold tracking-widest uppercase">Nos Produits</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold mt-3 mb-6">Passez à l'action</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto text-lg">Des ressources digitales concrètes pour générer vos premiers revenus en ligne.</p>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-up" style="animation-delay:0.15s" id="products-grid">
+     </div>
+    </div>
+   </section><!-- Pourquoi nous -->
+   <section id="pourquoi" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="fade-up text-center mb-16"><span class="text-gold text-sm font-semibold tracking-widest uppercase">Avantages</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold mt-3 mb-6">Pourquoi nous choisir ?</h2>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-up" style="animation-delay:0.2s">
+      <div class="text-center p-8 rounded-2xl border border-gray-800 hover:border-gold/30 transition bg-dark-surface">
+       <div class="w-16 h-16 mx-auto rounded-2xl bg-gold/10 flex items-center justify-center mb-5"><i data-lucide="package" class="w-8 h-8 text-gold"></i>
+       </div>
+       <h3 class="font-display font-bold text-lg mb-2">Produits pratiques</h3>
+       <p class="text-gray-500 text-sm">Applicables immédiatement, sans pré-requis technique.</p>
+      </div>
+      <div class="text-center p-8 rounded-2xl border border-gray-800 hover:border-gold/30 transition bg-dark-surface">
+       <div class="w-16 h-16 mx-auto rounded-2xl bg-gold/10 flex items-center justify-center mb-5"><i data-lucide="trending-up" class="w-8 h-8 text-gold"></i>
+       </div>
+       <h3 class="font-display font-bold text-lg mb-2">Résultats rapides</h3>
+       <p class="text-gray-500 text-sm">Voyez vos premiers gains en quelques jours seulement.</p>
+      </div>
+      <div class="text-center p-8 rounded-2xl border border-gray-800 hover:border-gold/30 transition bg-dark-surface">
+       <div class="w-16 h-16 mx-auto rounded-2xl bg-gold/10 flex items-center justify-center mb-5"><i data-lucide="globe" class="w-8 h-8 text-gold"></i>
+       </div>
+       <h3 class="font-display font-bold text-lg mb-2">Accessible à tous</h3>
+       <p class="text-gray-500 text-sm">Que vous soyez étudiant, salarié ou entrepreneur.</p>
+      </div>
+      <div class="text-center p-8 rounded-2xl border border-gray-800 hover:border-gold/30 transition bg-dark-surface">
+       <div class="w-16 h-16 mx-auto rounded-2xl bg-gold/10 flex items-center justify-center mb-5"><i data-lucide="shield-check" class="w-8 h-8 text-gold"></i>
+       </div>
+       <h3 class="font-display font-bold text-lg mb-2">Aucune expérience requise</h3>
+       <p class="text-gray-500 text-sm">Guides pas-à-pas conçus pour les débutants complets.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact -->
+   <section id="contact" class="py-24 px-6 bg-dark-card">
+    <div class="max-w-7xl mx-auto">
+     <div class="fade-up text-center mb-16"><span class="text-gold text-sm font-semibold tracking-widest uppercase">Contact</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold mt-3 mb-6">Parlons de votre succès</h2>
+      <p class="text-gray-400 max-w-xl mx-auto text-lg">Une question ? Contactez-nous directement.</p>
+     </div>
+     <div class="flex flex-col sm:flex-row justify-center gap-6 fade-up max-w-2xl mx-auto"><a id="email-link" href="mailto:stewandigitalhub@gmail.com" class="flex-1 flex items-center gap-4 bg-dark-surface border border-gray-800 hover:border-gold/40 rounded-2xl p-6 transition group">
+       <div class="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition shrink-0"><i data-lucide="mail" class="w-7 h-7 text-gold"></i>
+       </div>
+       <div>
+        <p class="text-sm text-gray-500 mb-1">Email</p>
+        <p id="email-text" class="font-semibold text-white text-sm">stewandigitalhub@gmail.com</p>
+       </div></a> <a id="whatsapp-link" href="https://wa.me/243826253405" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center gap-4 bg-dark-surface border border-gray-800 hover:border-green-500/40 rounded-2xl p-6 transition group">
+       <div class="w-14 h-14 rounded-xl bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 transition shrink-0"><i data-lucide="message-circle" class="w-7 h-7 text-green-400"></i>
+       </div>
+       <div>
+        <p class="text-sm text-gray-500 mb-1">WhatsApp</p>
+        <p id="whatsapp-text" class="font-semibold text-white text-sm">+243 826 253 405</p>
+       </div></a>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="border-t border-gray-800 py-10 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+     <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-gold to-gold-light flex items-center justify-center"><span class="text-dark font-bold text-sm font-display">S</span>
+      </div><span class="font-display font-bold text-white">STEWAN DIGITAL</span>
+     </div>
+     <p>© 2025 Stewan Digital Hub Service. Tous droits réservés.</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+const products = [
+  { icon: 'book-open', title: 'Guide E-Business Starter', desc: 'Lancez votre premier business en ligne en 7 jours avec ce guide étape par étape.', price: '15 $' },
+  { icon: 'bar-chart-2', title: 'Trading pour Débutants', desc: 'Apprenez les bases du trading et réalisez vos premières opérations rentables.', price: '25 $' },
+  { icon: 'layout', title: 'Kit Réseaux Sociaux', desc: 'Templates et stratégies pour monétiser vos réseaux sociaux rapidement.', price: '10 $' },
+  { icon: 'dollar-sign', title: 'Freelance Express', desc: 'Trouvez vos premiers clients freelance en moins de 14 jours.', price: '20 $' },
+  { icon: 'cpu', title: 'Automatisation Digitale', desc: 'Créez des revenus passifs grâce à l\'automatisation de vos activités en ligne.', price: '30 $' },
+  { icon: 'award', title: 'Masterclass Complet', desc: 'Pack complet : e-business, trading et stratégies digitales avancées.', price: '45 $' },
+];
+
+const grid = document.getElementById('products-grid');
+products.forEach(p => {
+  grid.innerHTML += `
+    <div class="product-card bg-dark-surface border border-gray-800 rounded-2xl p-8 flex flex-col">
+      <div class="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-5">
+        <i data-lucide="${p.icon}" class="w-6 h-6 text-gold"></i>
+      </div>
+      <h3 class="font-display text-xl font-bold mb-3">${p.title}</h3>
+      <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">${p.desc}</p>
+      <div class="flex items-center justify-between">
+        <span class="text-gold font-display font-bold text-2xl">${p.price}</span>
+        <a href="https://wa.me/243826253405?text=Bonjour, je suis intéressé par : ${encodeURIComponent(p.title)}" target="_blank" rel="noopener noreferrer" class="btn-gold text-dark font-bold px-5 py-2.5 rounded-xl text-sm inline-flex items-center gap-1.5">
+          Acheter <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>`;
+});
+
+// Mobile menu
+document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+  document.getElementById('mobile-menu').classList.toggle('hidden');
+});
+document.querySelectorAll('#mobile-menu a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+lucide.createIcons();
+
+// Element SDK
+const defaultConfig = {
+  background_color: '#0A0A0A',
+  surface_color: '#1A1A1A',
+  text_color: '#FFFFFF',
+  primary_color: '#D4A843',
+  secondary_color: '#9CA3AF',
+  font_family: 'Playfair Display',
+  font_size: 16,
+  hero_title: 'Gagnez vos premiers revenus en ligne rapidement',
+  hero_subtitle: "Dédiée à l'e-business, au trading et aux stratégies digitales simples. Des produits pratiques et efficaces pour agir vite, même sans expérience.",
+  cta_text: 'Commencer maintenant',
+  about_title: 'Qui sommes-nous ?',
+  contact_email: 'stewandigitalhub@gmail.com',
+  contact_whatsapp: '+243 826 253 405',
+};
+
+function applyConfig(config) {
+  const c = key => config[key] || defaultConfig[key];
+
+  // Text content
+  const titleEl = document.getElementById('hero-title');
+  const t = c('hero_title');
+  if (t.includes('revenus en ligne')) {
+    const parts = t.split('revenus en ligne');
+    titleEl.innerHTML = parts[0] + '<span class="gold-shimmer">revenus en ligne</span>' + parts[1];
+  } else {
+    titleEl.textContent = t;
+  }
+  document.getElementById('hero-subtitle').textContent = c('hero_subtitle');
+  document.getElementById('hero-cta').innerHTML = c('cta_text') + ' <i data-lucide="arrow-right" class="w-5 h-5"></i>';
+  document.getElementById('about-title').textContent = c('about_title');
+  document.getElementById('email-text').textContent = c('contact_email');
+  document.getElementById('whatsapp-text').textContent = c('contact_whatsapp');
+  document.getElementById('email-link').href = 'mailto:' + c('contact_email');
+
+  const wa = c('contact_whatsapp').replace(/[^0-9]/g, '');
+  document.getElementById('whatsapp-link').href = 'https://wa.me/' + wa;
+
+  // Colors
+  document.body.style.backgroundColor = c('background_color');
+  document.querySelectorAll('.bg-dark-surface, .bg-dark-card').forEach(el => {
+    el.style.backgroundColor = c('surface_color');
+  });
+
+  // Font
+  const ff = c('font_family');
+  const stack = ff + ', serif';
+  document.querySelectorAll('.font-display').forEach(el => el.style.fontFamily = stack);
+
+  // Font size
+  const fs = c('font_size');
+  document.body.style.fontSize = fs + 'px';
+
+  lucide.createIcons();
+}
+
+window.elementSdk.init({
+  defaultConfig,
+  onConfigChange: async (config) => applyConfig(config),
+  mapToCapabilities: (config) => {
+    const c = (key) => config[key] || defaultConfig[key];
+    const mut = (key) => ({
+      get: () => c(key),
+      set: (v) => { config[key] = v; window.elementSdk.setConfig({ [key]: v }); }
+    });
+    return {
+      recolorables: [mut('background_color'), mut('surface_color'), mut('text_color'), mut('primary_color'), mut('secondary_color')],
+      borderables: [],
+      fontEditable: mut('font_family'),
+      fontSizeable: mut('font_size'),
+    };
+  },
+  mapToEditPanelValues: (config) => {
+    const c = key => config[key] || defaultConfig[key];
+    return new Map([
+      ['hero_title', c('hero_title')],
+      ['hero_subtitle', c('hero_subtitle')],
+      ['cta_text', c('cta_text')],
+      ['about_title', c('about_title')],
+      ['contact_email', c('contact_email')],
+      ['contact_whatsapp', c('contact_whatsapp')],
+    ]);
+  }
+});
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e8937edf23f93c9',t:'MTc3NTU2Njg2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

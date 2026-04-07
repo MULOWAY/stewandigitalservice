@@ -1,0 +1,87 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Couleurs */
+:root {
+  --gold: #D4A843;
+  --dark: #0A0A0A;
+}
+
+/* Sections */
+.section {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+/* Titre */
+.title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+/* Bouton */
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #D4A843, #E8C96A);
+  color: #000;
+  font-weight: bold;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+/* Grid produits */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Carte produit */
+.product-card {
+  background: #141414;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #333;
+  transition: 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+}
+
+/* Logo */
+.logo {
+  width: 40px;
+  height: 40px;
+  background: var(--gold);
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+/* Navigation */
+nav a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+/* Mobile menu */
+.hidden {
+  display: none;
+}
